@@ -45,8 +45,10 @@
 				"source1 derive(full_name = concat(first_name,' ', last_name)) ~> derivedColumn1",
 				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
+				"     partitionFileNames:['customers_target.csv'],",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> target"
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> target"
 			]
 		}
 	}
