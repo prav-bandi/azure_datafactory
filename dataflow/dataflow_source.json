@@ -12,7 +12,15 @@
 					"name": "source1"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText1",
+						"type": "DatasetReference"
+					},
+					"name": "target"
+				}
+			],
 			"transformations": [
 				{
 					"name": "derivedColumn1"
@@ -34,7 +42,11 @@
 				"     validateSchema: true,",
 				"     inferDriftedColumnTypes: true,",
 				"     ignoreNoFilesFound: false) ~> source1",
-				"source1 derive(full_name = concat(first_name,' ', last_name)) ~> derivedColumn1"
+				"source1 derive(full_name = concat(first_name,' ', last_name)) ~> derivedColumn1",
+				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> target"
 			]
 		}
 	}
