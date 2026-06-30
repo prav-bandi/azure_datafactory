@@ -1,0 +1,15 @@
+{
+	"name": "cdf-pbandi",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "3b8080b5-e1cc-4a85-ac08-8ef1c3ed471a",
+		"tenantId": "7609b844-61cf-46a6-8ff1-780181d7c5d5"
+	}
+}
