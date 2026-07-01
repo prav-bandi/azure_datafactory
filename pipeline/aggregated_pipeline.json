@@ -19,6 +19,13 @@
 						"referenceName": "aggregated_dataflow",
 						"type": "DataFlowReference"
 					},
+					"staging": {
+						"linkedService": {
+							"referenceName": "AzureBlobStorage1",
+							"type": "LinkedServiceReference"
+						},
+						"folderPath": "adf"
+					},
 					"compute": {
 						"coreCount": 8,
 						"computeType": "General"
