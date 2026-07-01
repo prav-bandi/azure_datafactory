@@ -1,0 +1,16 @@
+{
+	"name": "bigquery_customers",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "GoogleBigQuery1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "GoogleBigQueryV2Object",
+		"schema": [],
+		"typeProperties": {
+			"dataset": "azure",
+			"table": "customers"
+		}
+	}
+}
