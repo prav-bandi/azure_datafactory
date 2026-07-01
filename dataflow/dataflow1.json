@@ -19,13 +19,24 @@
 					"name": "ordersblob"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "AzureSynapseAnalyticsTable2",
+						"type": "DatasetReference"
+					},
+					"name": "finaltable"
+				}
+			],
 			"transformations": [
 				{
 					"name": "join1"
 				},
 				{
 					"name": "ordersblobcast"
+				},
+				{
+					"name": "aggregate1"
 				}
 			],
 			"scriptLines": [
@@ -69,7 +80,21 @@
 				"          order_date as date,",
 				"          status as string",
 				"     ),",
-				"     errors: true) ~> ordersblobcast"
+				"     errors: true) ~> ordersblobcast",
+				"join1 aggregate(groupBy(customerssynapse@customer_id),",
+				"     number_of_orders = count(order_id)) ~> aggregate1",
+				"aggregate1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     staged: true,",
+				"     allowCopyCommand: true,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> finaltable"
 			]
 		}
 	}
