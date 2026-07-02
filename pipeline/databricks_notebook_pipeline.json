@@ -102,15 +102,6 @@
 							{
 								"source": {
 									"type": "String",
-									"ordinal": 5
-								},
-								"sink": {
-									"name": "flag_emoji"
-								}
-							},
-							{
-								"source": {
-									"type": "String",
 									"ordinal": 6
 								},
 								"sink": {
