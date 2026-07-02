@@ -14,7 +14,7 @@
 				"container": "delta"
 			},
 			"columnDelimiter": ",",
-			"escapeChar": "\\",
+			"escapeChar": "\"",
 			"firstRowAsHeader": false,
 			"quoteChar": null
 		},
