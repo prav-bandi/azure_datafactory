@@ -30,6 +30,10 @@
 		"AzureSynapseAnalytics1_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "sqladminuser"
+		},
+		"eventtrigger_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/377d4dc0-ea2d-41fc-abd1-00d24ab170af/resourceGroups/mylearning/providers/Microsoft.Storage/storageAccounts/pbandi"
 		}
 	},
 	"variables": {
@@ -1216,6 +1220,36 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/dataflows/dataflow_source')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/eventtrigger')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "transfer_customers_file",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					}
+				],
+				"type": "BlobEventsTrigger",
+				"typeProperties": {
+					"blobPathBeginsWith": "/delta/blobs/source/customers.csv",
+					"ignoreEmptyBlobs": true,
+					"scope": "[parameters('eventtrigger_properties_typeProperties_scope')]",
+					"events": [
+						"Microsoft.Storage.BlobCreated"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/transfer_customers_file')]"
 			]
 		}
 	]

@@ -31,6 +31,10 @@
 			"type": "string",
 			"defaultValue": "sqladminuser"
 		},
+		"eventtrigger_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/377d4dc0-ea2d-41fc-abd1-00d24ab170af/resourceGroups/mylearning/providers/Microsoft.Storage/storageAccounts/pbandi"
+		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -75,6 +79,9 @@
 					},
 					"AzureSynapseAnalytics1_properties_typeProperties_userName": {
 						"value": "[parameters('AzureSynapseAnalytics1_properties_typeProperties_userName')]"
+					},
+					"eventtrigger_properties_typeProperties_scope": {
+						"value": "[parameters('eventtrigger_properties_typeProperties_scope')]"
 					}
 				}
 			},
