@@ -8,11 +8,20 @@
 		"AzureBlobStorage1_connectionString": {
 			"value": ""
 		},
+		"AzureDatabricks1_accessToken": {
+			"value": ""
+		},
+		"AzureDatabricksDeltaLake1_accessToken": {
+			"value": ""
+		},
 		"AzureSynapseAnalytics1_password": {
 			"value": ""
 		},
 		"GoogleBigQuery1_keyFileContent": {
 			"value": ""
+		},
+		"AzureDatabricks1_properties_typeProperties_existingClusterId": {
+			"value": "0626-015521-mfza4r6q"
 		},
 		"AzureSynapseAnalytics1_properties_typeProperties_server": {
 			"value": "pbandi.sql.azuresynapse.net"
